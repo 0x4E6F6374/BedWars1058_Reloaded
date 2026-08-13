@@ -149,10 +149,15 @@ public class BedWars extends JavaPlugin {
         }
 
         try {
-            Class.forName("com.destroystokyo.paper.PaperConfig");
+            Class.forName("io.papermc.paper.configuration.GlobalConfiguration");
             isPaper = true;
         } catch (ClassNotFoundException e) {
-            isPaper = false;
+            try {
+                Class.forName("com.destroystokyo.paper.PaperConfig");
+                isPaper = true;
+            } catch (ClassNotFoundException e2) {
+                isPaper = false;
+            }
         }
 
         plugin = this;
