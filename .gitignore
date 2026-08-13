@@ -2,6 +2,9 @@
 *.orig
 !.gitignore
 
+# opencode
+.opencode/
+
 # Windows
 Thumbs.db
 ehthumbs.db
