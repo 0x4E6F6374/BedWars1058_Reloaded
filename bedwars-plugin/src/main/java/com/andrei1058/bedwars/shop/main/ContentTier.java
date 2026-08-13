@@ -105,11 +105,11 @@ public class ContentTier implements IContentTier {
 
         // potion display color based on NBT tag
         if (yml.getString(path + ".tier-item.potion-display") != null && !yml.getString(path + ".tier-item.potion-display").isEmpty()) {
-            itemStack = nms.setTag(itemStack, "Potion", yml.getString(path + ".tier-item.potion-display"));
+            itemStack = nms.setTag(itemStack, "potion", yml.getString(path + ".tier-item.potion-display"));
         }
         // 1.16+ custom color
         if (yml.getString(path + ".tier-item.potion-color") != null && !yml.getString(path + ".tier-item.potion-color").isEmpty()) {
-            itemStack = nms.setTag(itemStack, "CustomPotionColor", yml.getString(path + ".tier-item.potion-color"));
+            itemStack = nms.setTag(itemStack, "custompotioncolor", yml.getString(path + ".tier-item.potion-color"));
         }
 
         if (itemStack != null) {

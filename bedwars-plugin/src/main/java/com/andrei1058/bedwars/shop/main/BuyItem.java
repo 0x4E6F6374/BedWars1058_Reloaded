@@ -103,7 +103,7 @@ public class BuyItem implements IBuyItem {
         if (yml.get(path + ".potion") != null && (itemStack.getType() == Material.POTION)) {
             // 1.16+ custom color
             if (yml.getString(path + ".potion-color") != null && !yml.getString(path + ".potion-color").isEmpty()) {
-                itemStack = nms.setTag(itemStack, "CustomPotionColor", yml.getString(path + ".potion-color"));
+                itemStack = nms.setTag(itemStack, "custompotioncolor", yml.getString(path + ".potion-color"));
             }
             PotionMeta imm = (PotionMeta) itemStack.getItemMeta();
             if (imm != null) {
@@ -136,7 +136,7 @@ public class BuyItem implements IBuyItem {
                 itemStack.setItemMeta(imm);
             }
 
-            itemStack = nms.setTag(itemStack, "Potion", "minecraft:water");
+            itemStack = nms.setTag(itemStack, "potion", "minecraft:water");
             if (parent.getItemStack().getType() == Material.POTION && imm != null && !imm.getCustomEffects().isEmpty()) {
                 ItemStack parentItemStack = parent.getItemStack();
                 if (parentItemStack.getItemMeta() != null) {
@@ -146,7 +146,7 @@ public class BuyItem implements IBuyItem {
                     }
                     parentItemStack.setItemMeta(potionMeta);
                 }
-                parentItemStack = nms.setTag(parentItemStack, "Potion", "minecraft:water");
+                parentItemStack = nms.setTag(parentItemStack, "potion", "minecraft:water");
                 parent.setItemStack(parentItemStack);
             }
         }

@@ -46,7 +46,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class VersionSupport {
 
     private static String name2;
-    public static String PLUGIN_TAG_GENERIC_KEY = "BedWars1058";
+    public static String PLUGIN_TAG_GENERIC_KEY = "bedwars1058";
     public static String PLUGIN_TAG_TIER_KEY = "tierIdentifier";
 
     private Effect eggBridge;

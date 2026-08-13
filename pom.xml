@@ -126,6 +126,7 @@
         <module>versionsupport_v1_21_R5</module>
         <module>versionsupport_v1_21_R6</module>
         <module>versionsupport_v1_21_R7</module>
+        <module>sidebar-v1_21_R7</module>
     </modules>
 
     <distributionManagement>

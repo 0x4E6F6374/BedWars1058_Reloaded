@@ -376,6 +376,12 @@
             <version>26.6-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.andrei1058.spigot.sidebar</groupId>
+            <artifactId>sidebar-v1_21_R7</artifactId>
+            <version>26.6-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
         <!--        End of Sidebar LIB-->
         <!-- Slime Paper -->
         <dependency>

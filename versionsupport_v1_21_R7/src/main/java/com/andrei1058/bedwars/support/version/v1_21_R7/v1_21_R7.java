@@ -348,7 +348,8 @@ public class v1_21_R7 extends VersionSupport {
     @Override
     public void registerTntWhitelist(float endStoneBlast, float glassBlast) {
         try {
-            Field field = BlockBase.class.getDeclaredField("aH");
+            Field field = getExplosionResistanceField();
+
             field.setAccessible(true);
 
             field.set(CraftMagicNumbers.getBlock(Material.END_STONE), endStoneBlast);
@@ -365,6 +366,16 @@ public class v1_21_R7 extends VersionSupport {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private Field getExplosionResistanceField() throws NoSuchFieldException {
+        for (Field f : BlockBase.class.getDeclaredFields()) {
+            if (f.getType() != float.class) continue;
+            if (f.getName().equals("explosionResistance") || f.getName().equals("G") || f.getName().equals("aH")) {
+                return f;
+            }
+        }
+        throw new NoSuchFieldException("explosionResistance");
     }
 
     @Override
