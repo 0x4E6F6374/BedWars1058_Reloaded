@@ -33,6 +33,10 @@
             <id>codemc-nms</id>
             <url>https://repo.codemc.io/repository/nms/</url>
         </repository>
+        <repository>
+            <id>andrei1058-snapshots</id>
+            <url>https://repo.andrei1058.com/snapshots/</url>
+        </repository>
     </repositories>
 
     <dependencies>

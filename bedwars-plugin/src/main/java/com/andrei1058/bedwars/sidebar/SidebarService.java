@@ -14,6 +14,7 @@ import com.andrei1058.bedwars.api.sidebar.ISidebarService;
 import com.andrei1058.bedwars.metrics.MetricsManager;
 import com.andrei1058.bedwars.sidebar.thread.*;
 import com.andrei1058.spigot.sidebar.SidebarManager;
+import com.andrei1058.spigot.sidebar.SidebarProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,7 +30,7 @@ public class SidebarService implements ISidebarService {
 
     private static SidebarService instance;
 
-    private final SidebarManager sidebarHandler;
+    private SidebarManager sidebarHandler;
     private final HashMap<UUID, BwSidebar> sidebars = new HashMap<>();
 
     public static boolean init(JavaPlugin plugin) {
@@ -115,6 +116,15 @@ public class SidebarService implements ISidebarService {
 
     private SidebarService() {
         sidebarHandler = SidebarManager.init();
+        if (sidebarHandler != null) {
+            try {
+                String serverVersion = Bukkit.getServer().getClass().getName().split("\\.")[3];
+                Class<?> providerClass = Class.forName("com.andrei1058.bedwars.libs.sidebar." + serverVersion + ".ProviderImpl");
+                sidebarHandler.setSidebarProvider((SidebarProvider) providerClass.getDeclaredConstructor().newInstance());
+            } catch (ReflectiveOperationException e) {
+                sidebarHandler = null;
+            }
+        }
     }
 
     public void giveSidebar(@NotNull Player player, @Nullable IArena arena, boolean delay) {
