@@ -118,7 +118,7 @@ public class SidebarService implements ISidebarService {
         sidebarHandler = SidebarManager.init();
         if (sidebarHandler != null) {
             try {
-                String serverVersion = Bukkit.getServer().getClass().getName().split("\\.")[3];
+                String serverVersion = BedWars.getServerVersion();
                 Class<?> providerClass = Class.forName("com.andrei1058.bedwars.libs.sidebar." + serverVersion + ".ProviderImpl");
                 sidebarHandler.setSidebarProvider((SidebarProvider) providerClass.getDeclaredConstructor().newInstance());
             } catch (ReflectiveOperationException e) {

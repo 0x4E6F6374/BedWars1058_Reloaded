@@ -122,7 +122,7 @@ public class BedWars extends JavaPlugin {
     private static Chat chat = new NoChat();
     protected static Level level;
     private static Economy economy;
-    private static final String version = Bukkit.getServer().getClass().getName().split("\\.")[3];
+    private static final String version = detectServerVersion();
     private static String lobbyWorld = "";
     private static boolean shuttingDown = false;
 
@@ -732,6 +732,104 @@ public class BedWars extends JavaPlugin {
      */
     public static String getServerVersion() {
         return version;
+    }
+
+    private static String detectServerVersion() {
+        String[] parts = Bukkit.getServer().getClass().getName().split("\\.");
+        if (parts.length > 3 && parts[3].matches("v\\d+_\\d+_R\\d+")) {
+            return parts[3];
+        }
+        String bukkitVersion = Bukkit.getBukkitVersion();
+        String mcVersion = bukkitVersion.split("-")[0];
+        return mapMinecraftVersion(mcVersion);
+    }
+
+    private static String mapMinecraftVersion(String mc) {
+        switch (mc) {
+            case "1.8":
+            case "1.8.5":
+            case "1.8.6":
+            case "1.8.7":
+            case "1.8.8":
+                return "v1_8_R3";
+            case "1.9":
+            case "1.9.4":
+                return "v1_9_R2";
+            case "1.10":
+            case "1.10.2":
+                return "v1_10_R1";
+            case "1.11":
+            case "1.11.2":
+                return "v1_11_R1";
+            case "1.12":
+            case "1.12.2":
+                return "v1_12_R1";
+            case "1.13":
+            case "1.13.2":
+                return "v1_13_R2";
+            case "1.14":
+            case "1.14.4":
+                return "v1_14_R1";
+            case "1.15":
+            case "1.15.2":
+                return "v1_15_R1";
+            case "1.16.1":
+                return "v1_16_R1";
+            case "1.16.2":
+            case "1.16.3":
+                return "v1_16_R2";
+            case "1.16.4":
+            case "1.16.5":
+                return "v1_16_R3";
+            case "1.17":
+            case "1.17.1":
+                return "v1_17_R1";
+            case "1.18":
+            case "1.18.1":
+                return "v1_18_R1";
+            case "1.18.2":
+                return "v1_18_R2";
+            case "1.19":
+            case "1.19.1":
+            case "1.19.2":
+                return "v1_19_R1";
+            case "1.19.3":
+                return "v1_19_R2";
+            case "1.19.4":
+                return "v1_19_R3";
+            case "1.20":
+            case "1.20.1":
+                return "v1_20_R1";
+            case "1.20.2":
+                return "v1_20_R2";
+            case "1.20.3":
+            case "1.20.4":
+                return "v1_20_R3";
+            case "1.20.5":
+            case "1.20.6":
+                return "v1_20_R4";
+            case "1.21":
+            case "1.21.1":
+                return "v1_21_R1";
+            case "1.21.2":
+            case "1.21.3":
+                return "v1_21_R2";
+            case "1.21.4":
+                return "v1_21_R3";
+            case "1.21.5":
+                return "v1_21_R4";
+            case "1.21.6":
+            case "1.21.7":
+            case "1.21.8":
+                return "v1_21_R5";
+            case "1.21.9":
+            case "1.21.10":
+                return "v1_21_R6";
+            case "1.21.11":
+                return "v1_21_R7";
+            default:
+                return null;
+        }
     }
 
     public static String getLobbyWorld() {
