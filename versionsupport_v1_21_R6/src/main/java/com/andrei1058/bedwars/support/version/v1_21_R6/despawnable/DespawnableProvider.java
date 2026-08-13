@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.goal.target.PathfinderGoalNearestAttackable
 import net.minecraft.world.entity.player.EntityHuman;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_21_R6.entity.CraftLivingEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -31,16 +31,16 @@ public abstract class DespawnableProvider<T> {
     }
 
     protected PathfinderGoalSelector getTargetSelector(@NotNull EntityCreature entityLiving) {
-        return entityLiving.ci;
+        return entityLiving.cr;
     }
 
     protected PathfinderGoalSelector getGoalSelector(@NotNull EntityCreature entityLiving) {
-        return entityLiving.ch;
+        return entityLiving.cq;
     }
 
     protected void clearSelectors(@NotNull EntityCreature entityLiving) {
-        entityLiving.ch.b().clear();
-        entityLiving.ci.b().clear();
+        entityLiving.cq.b().clear();
+        entityLiving.cr.b().clear();
     }
 
     protected PathfinderGoal getTargetGoal(EntityInsentient entity, ITeam team, VersionSupport api) {

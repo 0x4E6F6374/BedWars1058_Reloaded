@@ -31,7 +31,7 @@ import net.minecraft.resources.MinecraftKey;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.item.EntityTNTPrimed;
-import net.minecraft.world.entity.projectile.EntityFireball;
+import net.minecraft.world.entity.projectile.hurtingprojectile.EntityFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockBase;
 import org.bukkit.Bukkit;
@@ -48,13 +48,13 @@ import org.bukkit.block.data.type.Bed;
 import org.bukkit.block.data.type.Ladder;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.command.Command;
-import org.bukkit.craftbukkit.v1_21_R5.CraftServer;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftFireball;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftTNTPrimed;
-import org.bukkit.craftbukkit.v1_21_R5.inventory.CraftItemStack;
-import org.bukkit.craftbukkit.v1_21_R5.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_21_R7.CraftServer;
+import org.bukkit.craftbukkit.v1_21_R7.entity.CraftFireball;
+import org.bukkit.craftbukkit.v1_21_R7.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_21_R7.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_21_R7.entity.CraftTNTPrimed;
+import org.bukkit.craftbukkit.v1_21_R7.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_21_R7.util.CraftMagicNumbers;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Entity;
@@ -184,7 +184,7 @@ public class v1_21_R7 extends VersionSupport {
     public void setSource(TNTPrimed tnt, Player owner) {
         EntityLiving nmsEntityLiving = ((CraftLivingEntity) owner).getHandle();
         EntityTNTPrimed nmsTNT = ((CraftTNTPrimed) tnt).getHandle();
-        nmsTNT.j = new EntityReference<>(nmsEntityLiving);
+        nmsTNT.j = EntityReference.a(nmsEntityLiving);
     }
 
     @Override
@@ -297,7 +297,7 @@ public class v1_21_R7 extends VersionSupport {
     @Override
     public void voidKill(Player p) {
         EntityPlayer player = getPlayer(p);
-        player.a(player.ea().n(), 1000);
+        player.a(player.en().n(), 1000);
     }
 
     @Override
@@ -573,7 +573,7 @@ public class v1_21_R7 extends VersionSupport {
                 location.getZ(),
                 location.getYaw(),
                 location.getPitch(),
-                entityPlayer.ap(),
+                entityPlayer.ay(),
                 0,
                 new net.minecraft.world.phys.Vec3D(0, 0, 0),
                 location.getYaw()
@@ -617,7 +617,7 @@ public class v1_21_R7 extends VersionSupport {
                                 boundLoc.getZ(),
                                 boundLoc.getYaw(),
                                 boundLoc.getPitch(),
-                                boundTo.ap(),
+                                boundTo.ay(),
                                 0,
                                 new net.minecraft.world.phys.Vec3D(0, 0, 0),
                                 boundLoc.getYaw()

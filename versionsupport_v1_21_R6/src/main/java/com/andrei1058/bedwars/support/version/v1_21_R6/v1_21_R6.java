@@ -48,13 +48,13 @@ import org.bukkit.block.data.type.Bed;
 import org.bukkit.block.data.type.Ladder;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.command.Command;
-import org.bukkit.craftbukkit.v1_21_R5.CraftServer;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftFireball;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftTNTPrimed;
-import org.bukkit.craftbukkit.v1_21_R5.inventory.CraftItemStack;
-import org.bukkit.craftbukkit.v1_21_R5.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_21_R6.CraftServer;
+import org.bukkit.craftbukkit.v1_21_R6.entity.CraftFireball;
+import org.bukkit.craftbukkit.v1_21_R6.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_21_R6.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_21_R6.entity.CraftTNTPrimed;
+import org.bukkit.craftbukkit.v1_21_R6.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_21_R6.util.CraftMagicNumbers;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Entity;
@@ -184,7 +184,7 @@ public class v1_21_R6 extends VersionSupport {
     public void setSource(TNTPrimed tnt, Player owner) {
         EntityLiving nmsEntityLiving = ((CraftLivingEntity) owner).getHandle();
         EntityTNTPrimed nmsTNT = ((CraftTNTPrimed) tnt).getHandle();
-        nmsTNT.j = new EntityReference<>(nmsEntityLiving);
+        nmsTNT.j = EntityReference.a(nmsEntityLiving);
     }
 
     @Override
@@ -297,7 +297,7 @@ public class v1_21_R6 extends VersionSupport {
     @Override
     public void voidKill(Player p) {
         EntityPlayer player = getPlayer(p);
-        player.a(player.ea().n(), 1000);
+        player.a(player.ei().n(), 1000);
     }
 
     @Override
@@ -573,7 +573,7 @@ public class v1_21_R6 extends VersionSupport {
                 location.getZ(),
                 location.getYaw(),
                 location.getPitch(),
-                entityPlayer.ap(),
+                entityPlayer.ax(),
                 0,
                 new net.minecraft.world.phys.Vec3D(0, 0, 0),
                 location.getYaw()
@@ -617,7 +617,7 @@ public class v1_21_R6 extends VersionSupport {
                                 boundLoc.getZ(),
                                 boundLoc.getYaw(),
                                 boundLoc.getPitch(),
-                                boundTo.ap(),
+                                boundTo.ax(),
                                 0,
                                 new net.minecraft.world.phys.Vec3D(0, 0, 0),
                                 boundLoc.getYaw()

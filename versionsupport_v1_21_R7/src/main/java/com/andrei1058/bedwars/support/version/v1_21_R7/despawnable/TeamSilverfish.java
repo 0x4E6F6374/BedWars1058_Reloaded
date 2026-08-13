@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.goal.target.PathfinderGoalHurtByTarget;
 import net.minecraft.world.entity.monster.EntitySilverfish;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_21_R5.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_21_R7.entity.CraftEntity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Silverfish;
 import org.jetbrains.annotations.NotNull;
