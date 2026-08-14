@@ -45,7 +45,7 @@ public class ProviderImpl extends SidebarProvider {
         );
         for (Player player : sidebar.getReceivers()) {
             PlayerConnection playerConnection = ((CraftPlayer) player).getHandle().g;
-            playerConnection.sendPacket(packetPlayOutScoreboardScore);
+            playerConnection.b(packetPlayOutScoreboardScore);
         }
     }
 
@@ -57,7 +57,7 @@ public class ProviderImpl extends SidebarProvider {
     @Override
     public void sendHeaderFooter(Player player, String header, String footer) {
         PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter(IChatBaseComponent.b(header), IChatBaseComponent.b(footer));
-        ((CraftPlayer)player).getHandle().g.sendPacket(packet);
+        ((CraftPlayer)player).getHandle().g.b(packet);
     }
 
     private static IScoreboardCriteria getCriteria(String name) {

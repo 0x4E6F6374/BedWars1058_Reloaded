@@ -93,7 +93,7 @@ public class PlayerListImpl extends ScoreboardTeam implements VersionedTabGroup 
     }
 
     private void sendPacket(Player player, Packet<?> packet) {
-        ((CraftPlayer) player).getHandle().g.sendPacket(packet);
+        ((CraftPlayer) player).getHandle().g.b(packet);
     }
 
     @Override
@@ -155,19 +155,23 @@ public class PlayerListImpl extends ScoreboardTeam implements VersionedTabGroup 
     }
 
     private static Object getScoreboardAction(String action) {
-        try {
-            Class<?> cls = Class.forName("net.minecraft.network.protocol.game.PacketPlayOutScoreboardTeam$a");
-            for (Object obj : cls.getEnumConstants()) {
-                try {
-                    Method m = cls.getMethod("name");
-                    String name = (String) m.invoke(obj);
-                    if (action.equals(name)) {
-                        return obj;
+        for (String className : new String[]{
+                "net.minecraft.network.protocol.game.PacketPlayOutScoreboardTeam$a",
+                "net.minecraft.network.protocol.game.ClientboundSetPlayerTeamPacket$Action"}) {
+            try {
+                Class<?> cls = Class.forName(className);
+                for (Object obj : cls.getEnumConstants()) {
+                    try {
+                        Method m = cls.getMethod("name");
+                        String name = (String) m.invoke(obj);
+                        if (action.equals(name)) {
+                            return obj;
+                        }
+                    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ignored) {
                     }
-                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ignored) {
                 }
+            } catch (Exception ignored) {
             }
-        } catch (Exception ignored) {
         }
         throw new RuntimeException("Something went wrong... please report this to SidebarLib by andrei1058");
     }
